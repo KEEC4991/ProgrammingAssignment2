@@ -51,7 +51,11 @@ cacheSolve <- function(x, ...) {
   ## 3. Si existe, se devuelve la matriz inversa existente.. termino la ejecucion con con return   
   ## 4. Sino calculo la nueva de la data actual
   
+  
+  ## Obtener la matriz inversa actual
   actual_inversa <- x$getInverse()
+  
+  ## Si no existe o no ha sido calculada, se calcula y retorna
   
   if( is.null(actual_inversa) ){
     
@@ -59,7 +63,8 @@ cacheSolve <- function(x, ...) {
     nueva_inversa <- solve(mi_data)
     x$setInverse(nueva_inversa)
     nueva_inversa
-    
+  
+  ## Si existe se devuelve el valor calculado    
   }else{
     actual_inversa
   }
