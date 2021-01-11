@@ -58,19 +58,25 @@ cacheSolve <- function(x, ...) {
   ## Si no existe o no ha sido calculada, se calcula y retorna
   
   if( is.null(actual_inversa) ){
-    ## Obtengo la data
+
+        ## Obtengo la data
     mi_data <- x$get();
+    
     ## Calculo la inversa
     nueva_inversa <- solve(mi_data)
+    
     ## Almaceno la nueva inversa
     x$setInverse(nueva_inversa)
+    
     ## Retorno la nueva inversa
     nueva_inversa
   
   ## Si existe se devuelve el valor calculado    
   }else{
+    
     ## Retorno la inversa actual
     actual_inversa
-  }
+  
+    }
     
 }
