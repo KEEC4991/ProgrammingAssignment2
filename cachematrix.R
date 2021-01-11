@@ -5,7 +5,7 @@
 
 makeCacheMatrix <- function(x = matrix()) {
 
-  ## Inicializar la matriz
+  ## Inicializar la matriz inversa
   inversa <- NULL
   
   ## Getter de la matrix - este metodo retorna la matriz
@@ -20,12 +20,12 @@ makeCacheMatrix <- function(x = matrix()) {
   }
   
   ## Getter matriz inversa
-  getInversa <- function(){
+  getInverse <- function(){
     inversa
   }
   
   ## Setter de una matriz inversa
-  setInversa <- function(invertida){
+  setInverse <- function(invertida){
      inversa <<- invertida
   }
   
@@ -33,8 +33,8 @@ makeCacheMatrix <- function(x = matrix()) {
   list(
     set = set,
     get = get,
-    getInverse = getInversa,
-    setInverse = setInversa
+    getInverse = getInverse,
+    setInverse = setInverse
   )
   
 }
@@ -44,4 +44,24 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
+  
+  ## Pasos:
+  ## 1. Extraccion de la inversa
+  ## 2. Validacion de si ya existe
+  ## 3. Si existe, se devuelve la matriz inversa existente.. termino la ejecucion con con return   
+  ## 4. Sino calculo la nueva de la data actual
+  
+  actual_inversa <- x$getInverse()
+  
+  if( is.null(actual_inversa) ){
+    
+    mi_data <- x$get();
+    nueva_inversa <- solve(mi_data)
+    x$setInverse(nueva_inversa)
+    nueva_inversa
+    
+  }else{
+    actual_inversa
+  }
+    
 }
