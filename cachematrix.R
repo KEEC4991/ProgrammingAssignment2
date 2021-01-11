@@ -5,6 +5,38 @@
 
 makeCacheMatrix <- function(x = matrix()) {
 
+  ## Inicializar la matriz
+  inversa <- NULL
+  
+  ## Getter de la matrix - este metodo retorna la matriz
+  get <- function( ){
+    x ## Return matrix
+  }
+  
+  ## Setter de la matriz
+  set <- function( matrix ) {
+    x <<- matrix
+    inversa <<- NULL
+  }
+  
+  ## Getter matriz inversa
+  getInversa <- function(){
+    inversa
+  }
+  
+  ## Setter de una matriz inversa
+  setInversa <- function(invertida){
+     inversa <<- invertida
+  }
+  
+  ## Creacion del retorno de la lista de metodos del objeto en R
+  list(
+    set = set,
+    get = get,
+    getInverse = getInversa,
+    setInverse = setInversa
+  )
+  
 }
 
 
